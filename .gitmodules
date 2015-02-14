@@ -1,0 +1,9 @@
+[submodule "vendor/zf-commons/zfc-user"]
+	path = vendor/zf-commons/zfc-user
+	url = https://github.com/ZF-Commons/ZfcUser.git
+[submodule "vendor/zf-commons/zfc-base"]
+	path = vendor/zf-commons/zfc-base
+	url = https://github.com/ZF-Commons/ZfcBase.git
+[submodule "vendor/zendframework/zendframework"]
+	path = vendor/zendframework/zendframework
+	url = https://github.com/zendframework/zf2.git
