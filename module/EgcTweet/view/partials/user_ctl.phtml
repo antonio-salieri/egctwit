@@ -4,7 +4,7 @@ $identity = $this->zfcUserIdentity();
 <ul class="nav navbar-nav <?= $button_class ?>">
     <?php if($identity): ?>
 	<li class="navbar-text">Welcome <?= $this->zfcUserDisplayName()?></li>
-	<li><a href="<?php echo $this->url('egc-tweet/profile') ?>"><?php echo $this->translate('Profile') ?></a></li>
+	<li><a href="<?php echo $this->url('egc-tweet', array('controller' => 'profile')) ?>"><?php echo $this->translate('Profile') ?></a></li>
 	<li><a href="<?php echo $this->url('logout') ?>"><?php echo $this->translate('Sign Out') ?></a></li>
     <?php else: ?>
 	<li><a href="<?php echo $this->url('user') ?>"><?php echo $this->translate('Login') ?></a></li>
