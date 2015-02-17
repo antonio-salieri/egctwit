@@ -1,14 +1,16 @@
 {
-    "name": "zendframework/skeleton-application",
-    "description": "Skeleton Application for ZF2",
+    "name": "EgcTweet",
+    "description": "Tweet previewer",
     "license": "BSD-3-Clause",
     "keywords": [
+	"EGC",
+	"Twitter",
         "framework",
         "zf2"
     ],
-    "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.3.*"
+        "zendframework/zendframework": "2.3.*",
+        "zf-commons/zfc-user": "dev-master"
     }
 }
