@@ -6,23 +6,26 @@ use Zend\ModuleManager\Feature\InputFilterProviderInterface;
 use Zend\Form\Fieldset;
 use Zend\Stdlib\Hydrator\ClassMethods;
 use EgcTweet\Entity\Following;
+use Zend\Form\Element\Text;
 
 class FollowingsFieldset extends Fieldset implements InputFilterProviderInterface {
-	
+
 	public function __construct() {
 		parent::__construct('following');
-		
+
 		$this->setHydrator(new ClassMethods(false))
 			->setObject(new Following());
-		
-		$this->add(array(
-			'type' => 'Text',
-			'name' => 'followingName',
-			'options' => array(
-				'label' => 'Follow',
-			)
+
+
+        $text_el = new Text('followingName', array(
+			'label' => 'Follow'
 		));
-		
+		$text_el->setAttribute('placeholder', 'Type name here');
+		$text_el->setAttribute('class', 'typeahead');
+		$text_el->setAttribute('data-provide', 'typeahead');
+
+		$this->add($text_el);
+
 		$this->add(array(
 			'type' => 'Hidden',
 			'name' => 'followingId'
@@ -38,7 +41,7 @@ class FollowingsFieldset extends Fieldset implements InputFilterProviderInterfac
 			'name' => 'userId'
 		));
 	}
-	
+
 	public function getInputFilterConfig() {
 		return array(
 			'followingName' => array(

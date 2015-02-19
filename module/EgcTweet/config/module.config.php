@@ -31,22 +31,42 @@ return array(
                     'route' => '/profile'
                 )
             ),
+//     		'twitter' => array(
+//     		    'type' => 'segment',
+//     		    'options' => array(
+//     		        'route' => '/twitter/:action/:method/:type',
+//     		        'constraints' => array(
+//     		            'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//     		            'method' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//     		            'type' => 'json'
+//     		        ),
+//     		        'defaults' => array(
+//     		            'module' => 'egc-tweet',
+//     		            'controller' => 'Twitter',
+//     		            'action' => 'index'
+//     		        )
+//     		    )
+//     		),
             'egc-tweet' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:controller[/:action]]',
+                    'route' => '/[:controller[/:action][/:data:.:type]]',
                     'constraints' => array(
                         'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'data' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    	'.' => '\.',
+                		'type' => '(json)'
                     ),
                     'defaults' => array(
                         'module' => 'egc-tweet',
-                        'controller' => 'index',
+                        'controller' => 'Index',
                         'action' => 'index'
                     )
                 )
-            )
+            ),
         )
+
     ),
     'service_manager' => array(
         'abstract_factories' => array(
@@ -70,7 +90,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'index' => 'EgcTweet\Controller\IndexController',
-            'profile' => 'EgcTweet\Controller\ProfileController'
+            'profile' => 'EgcTweet\Controller\ProfileController',
+            'twitter' => 'EgcTweet\Controller\TwitterController'
         )
     ),
     'view_manager' => array(
@@ -87,6 +108,9 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view'
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy'
         )
     ),
     // Placeholder for console routes

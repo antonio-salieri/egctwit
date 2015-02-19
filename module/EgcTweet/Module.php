@@ -6,6 +6,7 @@ use Zend\Mvc\MvcEvent;
 use EgcTweet\Entity\Following;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
+use EgcTweet\Service\Twitter;
 
 class Module
 {
@@ -49,6 +50,11 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Following());
                     return new TableGateway(\EgcTweet\Table\FollowingTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
+                'EgcTwitter' => function($sm)
+                {
+                	$config = $sm->get('Config');
+                	return new Twitter($config['egc_tweet']);
                 }
             )
         );

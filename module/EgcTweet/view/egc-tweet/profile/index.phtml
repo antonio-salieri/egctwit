@@ -1,4 +1,6 @@
 <?php
+$this->headScript()->appendFile('/js/typeahead.bundle.min.js', 'text/javascript');
+
 $form = $this->form;
 $form->prepare();
 $form->setAttribute('action', $this->url('egc-tweet', array('controller' => 'profile', 'action' => 'save')));
@@ -14,3 +16,23 @@ $form->setAttribute('method', 'post');
     </dl>
 
 <?php echo $this->form()->closeTag() ?>
+
+<script type="text/javascript">
+
+jQuery(function() {
+    var bestPictures = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: '/twitter/users/PHP.json',
+        remote: '/twitter/users/%QUERY.json'
+    });
+
+    bestPictures.initialize();
+
+    $('.zend_form fieldset .typeahead').typeahead(null, {
+        name: 'tweeter-users',
+        displayKey: 'value',
+        source: bestPictures.ttAdapter()
+    });
+});
+</script>
