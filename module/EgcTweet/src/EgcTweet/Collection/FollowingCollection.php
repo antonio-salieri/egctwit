@@ -10,4 +10,16 @@ class FollowingCollection extends BaseCollection
     {
         parent::add($item);
     }
+
+    protected function _populateItems(array $items)
+    {
+    	foreach($items as $item_data)
+    	{
+    		if (is_array ( $item_data )) {
+				$item = new Following();
+				$item->exchangeArray ( $item_data );
+  				$this->add($item);
+    		}
+    	}
+    }
 }

@@ -25,6 +25,12 @@ return array(
                     'route' => '/user/logout'
                 )
             ),
+            'profile' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/profile'
+                )
+            ),
             'egc-tweet' => array(
                 'type' => 'segment',
                 'options' => array(

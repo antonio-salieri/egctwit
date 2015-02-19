@@ -3,6 +3,6 @@ namespace EgcTweet\Form;
 
 use Zend\Form\Form;
 
-abstract class Base extends Form
+abstract class BaseForm extends Form
 {
 }

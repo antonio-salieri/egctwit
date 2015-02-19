@@ -40,7 +40,7 @@ $settings = array(
      *                  If callback used, it will receive the identity as the param
      *
      */
-    'login_redirect_route' => 'home',
+    'login_redirect_route' => 'profile',
 
     /**
      * Logout Redirect Route

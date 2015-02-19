@@ -24,20 +24,23 @@ class Following extends Base
      */
     protected $followingId;
 
-    /**
-     * @var int Order at which this following is added displayed
-     */
-    protected $followingOrder;
-
-    public function exchangeArray(array $data)
+    public function getFollowingName()
     {
-        foreach (array_keys(get_class_vars(__CLASS__)) as $prop_name)
-        {
-            $this->$prop_name = null;
-            if (!empty($data[$prop_name]))
-            {
-                $this->$prop_name = $data[$prop_name];                
-            }
-        }
+    	return $this->followingName;
+    }
+
+    public function getFollowingId()
+    {
+    	return $this->followingId;
+    }
+
+    public function getId()
+    {
+    	return $this->id;
+    }
+
+    public function getUserId()
+    {
+    	return $this->userId;
     }
 }
