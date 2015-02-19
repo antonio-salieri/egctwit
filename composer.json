@@ -1,5 +1,5 @@
 {
-    "name": "EgcTweet",
+    "name": "antonio-salieri/egc_tweet",
     "description": "Tweet previewer",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -11,6 +11,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*",
-        "zf-commons/zfc-user": "dev-master"
+        "zf-commons/zfc-user": "dev-master",
+        "zendframework/zendservice-twitter": ">=2.0"
     }
 }

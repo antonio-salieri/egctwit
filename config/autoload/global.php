@@ -12,5 +12,13 @@
  */
 
 return array(
-    // ...
+    'db' => array(
+        'driver'    => 'PdoSqlite',
+        'database'  => 'data/egctweet.sqlite',
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory'
+        ),
+    ),
 );
