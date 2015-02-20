@@ -2,6 +2,8 @@
 namespace EgcTweet\Service;
 
 use ZendService\Twitter\Twitter as ZendTwitter;
+use Zend\Http\Response;
+use ZendService\Twitter\Response as ZendTwitterResponse;
 
 class Twitter extends ZendTwitter
 {
@@ -34,5 +36,19 @@ class Twitter extends ZendTwitter
         }
 
         return parent::usersSearch($query, $options);
+	}
+
+	protected function get($path, array $query = array())
+	{
+		$response = null;
+		try {
+			$response = parent::get($path, $query);
+		} catch (\Exception $e) {
+			$http_response = new Response();
+			$http_response->setStatusCode(Response::STATUS_CODE_500);
+			$response = new ZendTwitterResponse($http_response);
+		}
+
+		return $response;
 	}
 }
