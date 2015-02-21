@@ -1,4 +1,4 @@
-# egctwit
+# egctweet
 
 This is simple ZF2 application which shows last five user tweets.
 
