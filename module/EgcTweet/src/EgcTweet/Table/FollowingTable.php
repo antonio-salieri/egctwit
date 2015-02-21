@@ -19,6 +19,21 @@ class FollowingTable
         $this->tableGateway = $tableGateway;
     }
 
+    public function getAllFollowings()
+    {
+        $sql = new Sql($this->tableGateway->getAdapter());
+        $select = $sql->select();
+        $select->from(self::TABLE_NAME);
+
+        $rowset = $this->tableGateway->selectWith($select);
+
+        $collection = new FollowingCollection();
+        foreach ($rowset as $row) {
+            $collection->add($row);
+        }
+
+        return $collection;
+    }
     public function getUserFollowings($userId)
     {
         $id = (int) $userId;
@@ -28,14 +43,14 @@ class FollowingTable
             ->where(array(
                 'userId' => $id
             ));
-        
+
         $rowset = $this->tableGateway->selectWith($select);
-        
+
         $collection = new FollowingCollection();
         foreach ($rowset as $row) {
             $collection->add($row);
         }
-        
+
         return $collection;
     }
 
@@ -48,14 +63,14 @@ class FollowingTable
                 'id' => $id,
                 'userId' => $user_id
             ));
-        
+
         $rowset = $this->tableGateway->selectWith($select);
-        
+
         $row = $rowset->current();
         if (! $row) {
             throw new \Exception("Could not find following");
         }
-        
+
         return $row;
     }
 

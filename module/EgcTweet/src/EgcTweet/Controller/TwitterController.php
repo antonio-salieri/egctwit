@@ -85,4 +85,16 @@ class TwitterController extends AbstractActionController
 
         return $view;
     }
+
+    public function timelineAction()
+    {
+    	/* @var $twitter \EgcTweet\Service\Twitter */
+    	$twitter = $this->getTwitterService();
+    	$user_id = (int)$this->params()->fromRoute(self::REQUEST_QUERY_DATA_NAME);
+        $tweets = $twitter->getLastTweets($user_id);
+
+    	$view = $this->prepareViewModel($tweets);
+
+    	return $view;
+    }
 }

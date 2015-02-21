@@ -68,7 +68,7 @@ jQuery(function() {
         	].join('\n'),
 //         	suggestion: Handlebars.compile('<div style="margin:0; padding:2px;clear:both;"><img style="padding:4px;float:left;position:left;" src="{{profile_image_url}}"/><span style="float:left;position: relative; ">{{name}}</span> <span style="float: right; font-weight: normal !important; position: relative; font-size:10px;top: 30px;">@{{screen_name}}</span></div>')
         	suggestion: Handlebars.compile(
-                ['<div class="typeahead-item typeahead-account-item js-selectable" >',
+                ['<div class="typeahead-item typeahead-account-item js-selectable" style="overflow: hidden;">',
                 '<p class="js-nav has-social-context" role="option">',
                   '<img class="profile-img size32" src="{{profile_image_url}}">',
                   '<span class="typeahead-user-item-info">',

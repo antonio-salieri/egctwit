@@ -8,17 +8,17 @@ use ZfcUser\Controller\UserController;
 use EgcTweet\Form\ProfileForm;
 use EgcTweet\Collection\FollowingCollection;
 
-class ProfileController extends AbstractActionController {
+class ProfileController extends AbstractController {
 
-	protected $profileTable;
+/*     protected function getFollowPerUserConfig()
+    {
+        $config = $this->getServiceLocator()->get('Config');
+        $result = false;
+        if (isset($config['store_followings_per_user']) && $config['store_followings_per_user'])
+            $result = true;
 
-	protected function getProfileTable() {
-		if (!$this->profileTable) {
-			$sm = $this->getServiceLocator();
-			$this->profileTable = $sm->get('EgcTweet\Table\FollowingTable');
-		}
-		return $this->profileTable;
-	}
+        return $result;
+    } */
 
 	public function indexAction() {
 
@@ -29,8 +29,9 @@ class ProfileController extends AbstractActionController {
 			return $this->redirect()->toRoute(UserController::ROUTE_LOGIN);
 		}
 
-		$form = new ProfileForm();
 		$followings = $profileTable->getUserFollowings($identity->getId());
+
+		$form = new ProfileForm();
 		$form->bind($followings);
 
 		return new ViewModel(array('form' => $form));
@@ -51,16 +52,14 @@ class ProfileController extends AbstractActionController {
 		{
 			$data = $form->getData();
 			$collection = new FollowingCollection($data[ProfileForm::FOLLOWINGS_FIELDSET_NAME]);
-			$user_id = $identity->getId();
+            $user_id = $identity->getId();
 
-			foreach ($collection as $item)
-			{
-				$following_name = $item->getFollowingName();
-				// test
-				if ($item->getFollowingId() && $following_name)
-				    $profileTable->saveFollowing($item, $user_id);
-				else if($item->getId() && empty($following_name))
-					$profileTable->deleteFollowing($item->getId(), $user_id);
+            foreach ($collection as $item) {
+                $following_name = $item->getFollowingName();
+                if ($item->getFollowingId() && $following_name)
+                    $profileTable->saveFollowing($item, $user_id);
+                else if($item->getId() && empty($following_name))
+                    $profileTable->deleteFollowing($item->getId(), $user_id);
 			}
 		}
 
