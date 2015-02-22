@@ -63,6 +63,6 @@ class ProfileController extends AbstractController {
 			}
 		}
 
-		return $this->redirect()->toRoute('profile');
+		return $this->redirect()->toRoute('home');
 	}
 }

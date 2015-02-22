@@ -1,6 +1,7 @@
 {
     "name": "antonio-salieri/egc_tweet",
     "description": "Tweet previewer",
+    "type": "project",
     "license": "BSD-3-Clause",
     "keywords": [
 	"EGC",

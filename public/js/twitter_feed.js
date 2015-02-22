@@ -15,7 +15,7 @@ var EgcTweetSpinner = function(url, options) {
     this.showretweetindicator = true;
     this.headerHTML = '';
     this.loadingHTML = '';
-    this.reload_period = 5000;
+    this.reload_period = 10000;
 
     // Set properties from options
     for (var prop in options) {
@@ -43,6 +43,12 @@ var EgcTweetSpinner = function(url, options) {
         if (this.twitterprofile)
             this.headerHTML += '<a href="https://twitter.com/' + twitterprofile + '" target="_blank">@' + twitterprofile + '</a></span></h1>';
     }
+   
+    this._scheduleNextReload = function() {
+        setTimeout(function(me) {
+            me.reload();
+        }, this.reload_period, this);
+    }
     
     this.reload = function () {
     	$.ajax({
@@ -66,8 +72,8 @@ var EgcTweetSpinner = function(url, options) {
 	            	return;
             	}
 
-//	            setTimeout(this.load, this.reload_period);
-	            
+                this._scheduleNextReload();
+
 	            var displayCounter = 1;
 	            if (feeds.length == 0) {
 	            	feedHTML = '<p style="color:darkblue">No tweets.</p>';
@@ -124,7 +130,7 @@ var EgcTweetSpinner = function(url, options) {
 	                        feedHTML += '<div class="twitter-pic"><a href="https://twitter.com/' + tweetusername + '" target="_blank"><img src="' + profileimage + '" width="42" height="42" alt="twitter icon" /></a></div>';
 	                        feedHTML += '<div class="twitter-text"><p><span class="tweetprofilelink"><strong><a href="https://twitter.com/' + tweetusername + '" target="_blank">' + tweetscreenname + '</a></strong> <a href="https://twitter.com/' + tweetusername + '" target="_blank">@' + tweetusername + '</a></span><span class="tweet-time"><a href="https://twitter.com/' + tweetusername + '/status/' + tweetid + '" target="_blank">' + relative_time(feeds[i].created_at) + '</a></span><br/>' + status + '</p>';
 
-	                        if ((isaretweet == true) && (showretweetindicator == true)) {
+	                        if ((isaretweet == true) && (this.showretweetindicator == true)) {
 	                            feedHTML += '<div id="retweet-indicator"></div>';
 	                        }
 	                        if (this.showtweetactions == true) {
