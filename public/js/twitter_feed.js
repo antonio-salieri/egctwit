@@ -124,7 +124,7 @@ var EgcTweetSpinner = function(url, options) {
 	                        feedHTML += '<div class="twitter-pic"><a href="https://twitter.com/' + tweetusername + '" target="_blank"><img src="' + profileimage + '" width="42" height="42" alt="twitter icon" /></a></div>';
 	                        feedHTML += '<div class="twitter-text"><p><span class="tweetprofilelink"><strong><a href="https://twitter.com/' + tweetusername + '" target="_blank">' + tweetscreenname + '</a></strong> <a href="https://twitter.com/' + tweetusername + '" target="_blank">@' + tweetusername + '</a></span><span class="tweet-time"><a href="https://twitter.com/' + tweetusername + '/status/' + tweetid + '" target="_blank">' + relative_time(feeds[i].created_at) + '</a></span><br/>' + status + '</p>';
 
-	                        if ((isaretweet == true) && (showretweetindicator == true)) {
+	                        if ((isaretweet == true) && (this.showretweetindicator == true)) {
 	                            feedHTML += '<div id="retweet-indicator"></div>';
 	                        }
 	                        if (this.showtweetactions == true) {
