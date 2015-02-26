@@ -72,7 +72,7 @@ var EgcTweetSpinner = function(url, options) {
 	            	return;
             	}
 
-                this._scheduleNextReload();
+//                this._scheduleNextReload();
 
 	            var displayCounter = 1;
 	            if (feeds.length == 0) {

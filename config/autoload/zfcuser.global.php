@@ -6,6 +6,9 @@
  * drop this config file in it and change the values as you wish.
  */
 $settings = array(
+    'enable_username' => true,
+    'auth_identity_fields' => array('username'),
+
     /**
      * Registration Form Captcha
      *

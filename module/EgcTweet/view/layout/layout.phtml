@@ -1,55 +1,68 @@
 <?php echo $this->doctype(); ?>
-
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <?php echo $this->headTitle('EGC '. $this->translate('Tweet viewer'))->setSeparator(' - ')->setAutoEscape(false) ?>
-
-        <?php echo $this->headMeta()
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<?php echo $this->headTitle('Parsed Cloud ')?>
+<?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>
+?>
+	<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/css/main.css') 
+                ->prependStylesheet($this->basePath() . '/css/reset.css')
+//		->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+//                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+?>
 
-        <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
-
-        <!-- Scripts -->
         <?php echo $this->headScript()
             ->prependFile($this->basePath() . '/js/bootstrap.min.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
         ; ?>
-
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('TweetPreview') ?></a>
-                </div>
-                <div class="collapse navbar-collapse">
-		<?= $this->partial('partials/user_ctl.phtml', array('button_class' => 'navbar-right')); ?>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
-        <div class="container">
-            <?php echo $this->content; ?>
-        </div> <!-- /container -->
-        <footer class="footer">
-            <hr>
-	    <div class="container">
-		<p>(ↄ) <?php echo date('Y') ?> by None Ltd. <?php echo $this->translate('All rights not reserved.') ?></p>
-	    </div>
-        </footer>
-        <?php echo $this->inlineScript() ?>
-    </body>
+</head>
+<body>
+	<div id="wrapper">
+	   <div id="header">
+		  <div id="logo"><a href="<?= $this->url('home')?>"><img src="/img/logo.jpg" alt="Logo tekst" /></a>
+		  </div><!-- end of logo -->
+		  <div id="navigation">
+			<?= $this->partial('partials/user_ctl.phtml')?>
+		  </div><!-- end of navigation -->
+		  <div id="share">
+			 <div id="btns">
+				<a href="" target="_blank"><img src="/img/twitter.png" alt="Twitter" /></a>
+				<a href="" target="_blank"><img src="/img/flickr.png" alt="Flickr" />
+				<a href="" target="_blank"><img src="/img/facebook.png" alt="Facebook share" /></a>
+				<a href="" target="_blank"><img src="/img/linkedin.png" alt="Linkedin share" /></a>
+				<a href="" target="_blank"><img src="/img/rss.png" alt="Rss" /></a>
+			</div>
+		  </div><!-- end of share -->
+	   </div><!-- end of header -->
+	  <div id="mainBody">
+			<div id="sideNav"> <a href="index.php"><img src="/img/twit_selected.png" alt="Twitter" /></a>
+				<img src="/img/rss_normal.png" alt="Twitter" />
+				<img src="/img/bookmarks_normal.png" alt="Twitter" />
+				<img src="/img/places_normal.png" alt="Twitter" />
+			</div><!--end of sideNav -->
+			<div id="banners">
+			   <div id="add1">
+				 <img src="/img/banner1.jpg" width="468" height="60" />
+			   </div>
+			   <div id="add2">
+				  <img src="/img/banner2.jpg" width="468" height="60" />
+			   </div>
+			</div>
+			<div id="feeds">
+			    <?php echo $this->content; ?>
+			</div>
+	   </div><!-- end of mainBody -->
+	   <div id="footer">
+		  <div id="copyright">
+			 <h4>All rights reserved</h4>
+		  </div><!-- end of copyright -->
+	   </div><!-- end of footer -->
+	</div><!-- end of wrapper -->
+</body>
 </html>
