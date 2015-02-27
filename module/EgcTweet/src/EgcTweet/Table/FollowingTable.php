@@ -6,6 +6,7 @@ use EgcTweet\Collection\FollowingCollection;
 use Zend\Db\Sql\Sql;
 use Zend\Db\Sql\Select;
 use EgcTweet\Entity\Following;
+use Zend\Db\Sql\Expression;
 
 class FollowingTable
 {
@@ -34,6 +35,27 @@ class FollowingTable
 
         return $collection;
     }
+
+    public function getThreeRandomFollowings()
+    {
+        $sql = new Sql($this->tableGateway->getAdapter());
+        $select = $sql->select();
+        $select->from(self::TABLE_NAME)
+                ->columns(array('*', 'rnd' => new Expression('RANDOM()')))
+                ->order('rnd')
+                ->limit(3)
+                ->group('followingId');
+
+        $rowset = $this->tableGateway->selectWith($select);
+
+        $collection = new FollowingCollection();
+        foreach ($rowset as $row) {
+            $collection->add($row);
+        }
+
+        return $collection;
+    }
+
     public function getUserFollowings($userId)
     {
         $id = (int) $userId;

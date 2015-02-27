@@ -4,6 +4,7 @@ $this->headLink()->appendStylesheet($this->basePath() . '/css/twitter_feed.css')
 ?>
 
 <!-- Feeds -->
+<div id="feeds">
 
 <?php
 /* @var $following EgcTweet\Entity\Following */
@@ -26,4 +27,5 @@ jQuery(function() {
 });
 </script>
 <?php endforeach;?>
+</div>
 <!-- end of Feeds -->

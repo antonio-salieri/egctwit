@@ -23,7 +23,7 @@ class FollowingsFieldset extends Fieldset implements InputFilterProviderInterfac
 		$text_el->setAttribute('placeholder', 'Type name here');
 		$text_el->setAttribute('autocomplete', 'off');
 		$text_el->setAttribute('class', 'typeahead form-control');
-// 		$text_el->setAttribute('class', 'form-control');
+		$text_el->setAttribute('class', 'form-control');
 		$text_el->setAttribute('data-provide', 'typeahead');
 
 		$this->add($text_el);

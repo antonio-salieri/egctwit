@@ -1,6 +1,12 @@
 @charset "utf-8";
 /* Reset CSS Document */
 
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: border-box;
+	box-sizing: inherit;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,6 +24,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 	background: transparent;
 }
+
+h1 {
+	font-weight: bold;
+}
+
 body {
 	line-height: 1;
 }

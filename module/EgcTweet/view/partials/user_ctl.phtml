@@ -18,14 +18,14 @@ $identity = $this->zfcUserIdentity();
 </script>
 <?php else: ?>
 <div id="userBtns">
-    <a href="#"><img src="/img/myaccount.png" alt="My Account" /></a>
+    <a href="/user"><img src="/img/myaccount.png" alt="My Account" /></a>
     <a href="/profile"><img src="/img/myWeb.png" alt="My Web" /></a>
     <a href="/user/logout"><img src="/img/logout.png" alt="Logout" /></a>
 </div>
 <?php endif; ?>
 
    <!-- Registration Form -->
-   
+
    <div id="RegForm" class="slidingDivReg">
 	  <form method="post" action="/user/register" >
 	  <div id="inputs">
@@ -34,30 +34,30 @@ $identity = $this->zfcUserIdentity();
 		  <input type="password" name="passwordVerify"  placeholder="Repeat Password" />
 		  <input type="text" name="email" placeholder="Enter Email" />
 	  </div>
-	  
+
 	  <input type="submit" name="register"  value=""/>
 	 </form>
    </div>
-   
+
    <!-- end of RegForm -->
-   
+
    <!-- Login Form -->
-   
+
    <div id="loginForm" class="slidingDiv">
-   
+
 	  <form method="post" action="/user/login" >
 	  <div id="inputs">
 		<span id="sprytextfield1">
-			<input type="text" name="username" placeholder="Username..." />
+			<input type="text" name="identity" placeholder="Username..." />
 			<span class="textfieldRequiredMsg">!</span>
 		</span>
 		<span id="sprytextfield2">
-	  <input type="password" id="password" name="password" placeholder="Password..." />
+	  <input type="password" id="password" name="credential" placeholder="Password..." />
 	  <span class="textfieldRequiredMsg">!</span></span>
 	  </div><!--end of inputs -->
-	  
+
 	  <input type="submit" name="login"  value=""/>
 	  </form>
    </div>
-   
+
    <!-- end of loginForm -->

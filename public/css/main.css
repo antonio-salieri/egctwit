@@ -244,7 +244,7 @@ body {
 	margin-left: 29px;
 }
 
-#feeds {
+#content {
 	float: left;
 	width: 969px;
 	height: 500px;
@@ -433,7 +433,7 @@ ul.dropdown ul ul {
 ul.dropdown li:hover > ul {
     visibility: visible;
 }
-/**
+
 .btn-primary {
     color: #fff;
     background-color: #F7941E;
@@ -458,4 +458,24 @@ ul.dropdown li:hover > ul {
     color: #fff;
     background-color: #F7941E;
     border-color: #DB8319;
-}**/
+}
+
+.form-control {
+	height: 15px;
+	margin-bottom: 10px;
+}
+
+legend {
+	margin: 5px 5px 10px 0;
+}
+
+.tt-dropdown-menu, .tt-query {
+	background-color: #fff !important;
+}
+.tt-hint {
+	display:none;
+}
+
+input.form-control {
+	width: 272px;
+}

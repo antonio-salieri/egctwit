@@ -18,11 +18,8 @@ $form->setAttribute('method', 'post');
 
 <?php echo $this->form()->openTag($form)?>
 
-<dl class="zend-form">
-    	<?php echo $this->formCollection($form->get(EgcTweet\Form\ProfileForm::FOLLOWINGS_FIELDSET_NAME));?>
-
-        <?php echo $this->formButton($form->get('submit'))?>
-    </dl>
+<?php echo $this->formCollection($form->get(EgcTweet\Form\ProfileForm::FOLLOWINGS_FIELDSET_NAME));?>
+<?php echo $this->formButton($form->get('submit'))?>
 
 <?php echo $this->form()->closeTag()?>
 
@@ -52,7 +49,7 @@ jQuery(function() {
 
     users.initialize();
 
-    $('.zend_form [data-provide=typeahead]').typeahead({
+    $('[data-provide=typeahead]').typeahead({
         	minLength: 3,
             highlight: true,
             hint:true
